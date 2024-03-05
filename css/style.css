@@ -1,14 +1,25 @@
 body{
-    background-color: whitesmoke;
-    text-align: center;
-}
-
-.idparagrafo{
-    color: steelblue;
-    background-color: beige;
+    text-align: left;
 }
 
 .idtitulo{
     color: tomato;
-    background-color: whitesmoke;
+    background-color: #701d70;
+}
+
+.p{
+    background-color: #20d5e2;
+}
+
+.fundo{
+    background-image: url("/img/2022-porsche-911-gt3-touring-exterior.jpg");
+    width: 600px;
+    height: 600px;
+    color: white;
+    padding: 20px 20px 0px 20px;
+    text-align: justify;
+    font-size: 20px;
+    letter-spacing: 2px;
+    background-position: center;
+    background-size: cover;
 }
