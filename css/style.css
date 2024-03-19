@@ -23,3 +23,123 @@ body{
     background-position: center;
     background-size: cover;
 }
+
+h3 {
+    color: red;
+    text-align: center;
+}
+
+h4 {
+    color: green;
+    text-align: left;
+}
+
+@media screen and (max-width: 500px){
+    h3 {
+        color: blue;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 600px){
+    h4 {
+        color: red;
+        text-align: right;
+    }
+}
+
+.elementos {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+@media screen and (orientation: landscape){
+    .elementos {
+        display: inline-block;
+    }
+}
+
+.elemento-filho {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+
+.elemento-pai {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.posicionamento {
+    width: 500px;
+    height: 500px;
+    border: 1px solid red;
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.posicionada {
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;
+}
+
+.flex-grow{
+    margin-top: 20px;
+    display: flex;
+}
+
+.fixa {
+    width: 280px;
+    height: 200px;
+    border: 1px solid blue;
+}
+
+.grow-1 {
+    width: auto;
+    flex-grow: 2;
+}
+
+.grow-2 {
+    width: auto;
+    flex-grow: 3;
+}
+
+.flex-basis {
+    margin-top: 20px;
+    display: flex;
+}
+
+.basis {
+    flex-basis: 200px;
+    height: 200px;
+    border: 1px solid aqua;
+}
+
+.menor {
+    flex-grow: 1;    
+}
+
+.maior {
+    flex-grow: 2;
+}
+
+.flex-shrink {
+    margin-top: 20px;
+    display: flex;
+}
+
+.shrink {
+    flex-basis: 200px;
+    height: 200px;
+    border: 1px solid violet;
+}
+
+.diferente {
+    flex-shrink: 2;
+}
