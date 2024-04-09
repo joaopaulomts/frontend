@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03</title>
+    <style>
+        div{
+            margin-bottom: 10px;
+        }
+        label, input{
+            display: block;
+        }
+        .checkbox label, 
+        .checkbox input{
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <form action="">
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" placeholder="Digite o seu nome" required>
+            </div>
+            <div>
+                <label for="cidade">Cidade:</label>
+                <input type="text" name="cidade" placeholder="Digite a sua cidade" required>
+            </div>
+            <div>
+                <label for="idade">Idade:</label>
+                <input type="number" name="idade" placeholder="Digite a sua idade" min="0" required>
+            </div>
+            <div>
+                <label for="data">Data:</label>
+                <input type="date" name="data" required>
+            </div>
+            <div>
+                <label for="cpf">Cpf:</label>
+                <input type="text" name="cpf" value="132.441.619-01" disabled>
+            </div>
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" placeholder="Digite o seu e-mail" required>
+            </div>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" placeholder="Digite a sua senha" required>
+            </div>
+            <div>
+                <label for="disciplinas[]">Selecione as disciplinas do semestre:</label>
+                <div class="checkbox">
+                    <input type="checkbox" name="disciplinas[]">
+                    <label>Soluções Web</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="disciplinas[]">
+                    <label>Inteligência Artificial</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="disciplinas[]">
+                    <label>Cloud Computing</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="disciplinas[]">
+                    <label>IoT II</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="disciplinas[]">
+                    <label>Design de Interação</label>
+                </div>
+            </div>
+            <div>
+                <label for="arquivo"></label>
+                <input type="file" name="arquivo">
+            </div>
+            <div>
+                <label for="arquivos[]"></label>
+                <input type="file" name="arquivos[]" multiple>
+            </div>
+            <div>
+                <label>Selecione um produto:</label>
+                <select>
+                    <option>Água</option>
+                    <option>Carne</option>
+                    <option>Arroz</option>
+                    <option>Refrigerante</option>
+                </select>
+            </div>
+            <div>
+                <label>Deixe seu comentário:</label>
+                <textarea></textarea>
+            </div>
+            <div>
+                <label>Informe sua cidade:</label>
+                <input type="text" list="cidades">
+
+                <datalist id="cidades">
+                    <option>Criciuma</option>
+                    <option>Içara</option>
+                    <option>Araranguá</option>
+                </datalist>
+            </div>
+            <div>
+                <input style="display: inline-block;" type="reset">
+                <input style="display: inline-block;" type="submit">               
+            </div>    
+        </form>
+    </div>
+    
+</body>
+</html>

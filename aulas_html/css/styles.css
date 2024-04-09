@@ -1,0 +1,133 @@
+.background-image {
+    background-image: url("/assets/tiburcio.jpg");
+    width: 600px;
+    height: 600px;
+    color: white;
+    padding: 20px 20px 0px 20px;
+    text-align: justify;
+    font-size: 20px;
+    letter-spacing: 2px;
+    background-position: center;
+    background-size: cover;
+    font-style: italic;
+}
+
+h3 {
+    color: red;
+    text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+    h3 {
+        color: blue;
+        text-align: left;
+    }
+}
+
+h4 {
+    color: red;
+    text-align: left;
+}
+
+@media screen and (min-width: 600px) {
+    h4 {
+        color: blue;
+        text-align: center;
+    }
+}
+
+.elementos {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+@media screen and (orientation: landscape) {
+    .elementos {
+        display: inline-block;
+    }  
+}
+
+.elemento-filho {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.elemento-pai {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.posicionamento {
+    width: 500px;
+    height: 500px;
+    margin-top: 20px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.posicionada {
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;
+}
+
+.flex-grow {
+    margin-top: 20px;
+    display: flex;
+}
+
+.fixa {
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;
+}
+
+.grow-1 {
+    width: auto;
+    flex-grow: 2;
+}
+.grow-2 {
+    width: auto;
+    flex-grow: 3;
+}
+
+.flex-basis {
+    margin-top: 20px;
+    display: flex;
+}
+
+.basis {
+    flex-basis: 200px;
+    height: 200px;
+    border: 1px solid red;
+}
+
+.menor {
+    flex-grow: 1;
+}
+
+.maior {
+    flex-grow: 2;
+}
+
+.flex-shrink {
+    margin-top: 20px;
+    display: flex;
+}
+
+.shrink {
+    flex-basis: 200px;
+    height: 200px;
+    border: 1px solid green;
+}
+
+.diferente {
+    flex-shrink: 2;
+}
