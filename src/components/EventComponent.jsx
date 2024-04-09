@@ -6,7 +6,7 @@ export default function EventComponent() {
 
   return (
     <div>
-      <button onClick={countEvent}>Clique!</button>
+      <button onClick={countEvent}>Clique</button>
     </div>
   );
 }
