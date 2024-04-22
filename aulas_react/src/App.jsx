@@ -6,6 +6,8 @@ import ConditionalComponent2 from "./components/ConditionalComponent2";
 import ProductComponent from "./components/ProductComponent";
 import PostComponent from "./components/PostComponent";
 import GenericComponent from "./components/GenericComponent";
+import MyButtonComponent from "./components/MyButtonComponent";
+import UseStateComponente1 from "./components/UseStateComponente1";
 
 function App() {
   // let component;
@@ -84,7 +86,7 @@ function App() {
         ))}
       </div> */}
 
-      <div>
+      {/* <div>
         <GenericComponent>
           <p>Eu sou o conteúdo passado na primeira chamada</p>
           <ol>
@@ -105,6 +107,14 @@ function App() {
           </ul>
           <hr />
         </GenericComponent>
+      </div> */}
+
+      {/* <div>
+        <MyButtonComponent></MyButtonComponent>
+      </div> */}
+
+      <div>
+        <UseStateComponente1></UseStateComponente1>
       </div>
     </>
   );
