@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import EventComponent from "./components/EventComponent";
 import IntroComponent from "./components/IntroComponent";
 import ConditionalComponent1 from "./components/ConditionalComponent1";
@@ -8,6 +9,8 @@ import PostComponent from "./components/PostComponent";
 import GenericComponent from "./components/GenericComponent";
 import MyButtonComponent from "./components/MyButtonComponent";
 import UseStateComponente1 from "./components/UseStateComponente1";
+import ComponenteTabela from "./components/ComponentTabela";
+import ProductTable from "./components/ComponentTabela";
 
 function App() {
   // let component;
@@ -35,6 +38,15 @@ function App() {
   //   { id: 2, title: "Post1", description: "Descrição Post 2" },
   //   { id: 3, title: "Post1", description: "Descrição Post 3" },
   // ];
+
+  const products = [
+    { id: 1, name: "Produto A", price: "R$ 150,00", stock: 20 },
+    { id: 2, name: "Produto B", price: "R$ 140,00", stock: 19 },
+    { id: 3, name: "Produto C", price: "R$ 130,00", stock: 18 },
+    { id: 4, name: "Produto D", price: "R$ 120,00", stock: 17 },
+    { id: 5, name: "Produto F", price: "R$ 110,00", stock: 16 },
+    { id: 6, name: "Produto G", price: "R$ 100,00", stock: 15 },
+  ];
 
   return (
     <>
@@ -113,8 +125,13 @@ function App() {
         <MyButtonComponent></MyButtonComponent>
       </div> */}
 
-      <div>
+      {/* <div>
         <UseStateComponente1></UseStateComponente1>
+      </div> */}
+
+      <div>
+        <h1>Tabela em React</h1>
+        <ProductTable products={products} />
       </div>
     </>
   );
