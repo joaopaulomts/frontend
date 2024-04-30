@@ -1,7 +1,7 @@
 import React from "react";
 import "./ComponentTabela.css";
 
-export default function ProductTable({ products }) {
+export default function ProductTable({ products, editar, deletar }) {
   return (
     <div>
       <h2>Tabela de Produtos</h2>
@@ -23,8 +23,8 @@ export default function ProductTable({ products }) {
               <td>{product.price}</td>
               <td>{product.stock}</td>
               <td className="actions">
-                <button>Editar</button>
-                <button>Excluir</button>
+                <button onClick={() => editar(product.id)}>Editar</button>
+                <button onClick={() => deletar(product.id)}>Excluir</button>
               </td>
             </tr>
           ))}

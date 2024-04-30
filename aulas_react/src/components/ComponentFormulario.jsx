@@ -1,0 +1,49 @@
+import React, { useState } from "react";
+import "./ComponentFormulario.css";
+
+export default function ComponentFormulario({
+  nome,
+  preco,
+  estoque,
+  handleName,
+  handlePrice,
+  handleStock,
+  salvar,
+  editar,
+  excluir,
+}) {
+  return (
+    <>
+      <div className="container">
+        <h2>Cadastro de Produtos</h2>
+        <form onSubmit={(e) => salvar(e)}>
+          <label htmlFor="nome">Nome:</label>
+          <input
+            type="text"
+            name="nome"
+            value={nome}
+            onChange={(e) => handleName(e)}
+            required
+          />
+          <label htmlFor="preco">Preço:</label>
+          <input
+            type="number"
+            name="preco"
+            value={preco}
+            onChange={(e) => handlePrice(e)}
+            required
+          />
+          <label htmlFor="estoque">Estoque:</label>
+          <input
+            type="number"
+            name="estoque"
+            value={estoque}
+            onChange={(e) => handleStock(e)}
+            required
+          />
+          <input type="submit" value="Cadastrar" />
+        </form>
+      </div>
+    </>
+  );
+}
