@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EventComponent from "./components/EventComponent";
 import IntroComponent from "./components/IntroComponent";
 import ConditionalComponent1 from "./components/ConditionalComponent1";
@@ -9,7 +9,6 @@ import PostComponent from "./components/PostComponent";
 import GenericComponent from "./components/GenericComponent";
 import MyButtonComponent from "./components/MyButtonComponent";
 import UseStateComponente1 from "./components/UseStateComponente1";
-import ComponenteTabela from "./components/ComponentTabela";
 import ProductTable from "./components/ComponentTabela";
 import ComponentFormulario from "./components/ComponentFormulario";
 
@@ -50,17 +49,30 @@ function App() {
   // ];
 
   const [products, setProducts] = useState([]);
-  const [id, setId] = useState(1);
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [edit, setEdit] = useState(false);
+
+  const url = "http://localhost:3000/products";
 
   const clearForm = () => {
     setName("");
     setPrice("");
     setStock("");
   };
+
+  useEffect(() => {
+    //Lista todos os produtos:
+    const getProductsList = async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      setProducts(data);
+    };
+
+    getProductsList();
+  }, []);
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -72,37 +84,81 @@ function App() {
     setStock(e.target.value);
   };
 
-  const saveProduct = (e) => {
-    e.preventDefault();
-    if (!edit) {
-      setId((v) => v + 1);
-      setProducts((prevProducts) => [
-        ...prevProducts,
-        { id, name, price, stock },
-      ]);
-    }
+  //Busca apenas um produto pelo seu ID:
+  const getProductById = async (id) => {
+    //Faz a requisição HTTP
+    const res = await fetch(url + `?id=${id}`);
+    const data = await res.json();
 
-    if (edit) {
-      const productIndex = products.findIndex((prod) => prod.id === id);
-      products[productIndex] = { id, name, price, stock };
-      setProducts(products);
-      setEdit(false);
-    }
-    clearForm();
-  };
+    //Carrega os dados no formulário para edição:
+    setName(data[0].name);
+    setPrice(data[0].price);
+    setStock(data[0].stock);
+    setId(data[0].id);
 
-  const deleteProduct = (id) => {
-    setProducts(products.filter((prod) => prod.id !== id));
-  };
-
-  const editProduct = (id) => {
-    const product = products.find((prod) => prod.id === id);
-    setId(product.id);
-    setName(product.name);
-    setPrice(product.price);
-    setStock(product.stock);
+    //Habilita edição:
     setEdit(true);
   };
+
+  const saveProduct = async (e) => {
+    e.preventDefault();
+    const saveRequestParams = {
+      method: edit ? "PUT" : "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ name, price, stock }),
+    };
+
+    //Cria URL para buscar todos ou apenas um produto
+    const save_url = edit ? url + `/${id}` : url;
+
+    //Faz a requisição HTTP
+    const res = await fetch(save_url, saveRequestParams);
+
+    //Se for cadastro de produto novo
+    if (!edit) {
+      const newProduct = await res.json();
+
+      //Atualização da tabela
+      setProducts((prevProducts) => [...prevProducts, newProduct]);
+    }
+
+    //Se for edição/atualização de produto já cadastrado:
+    if (edit) {
+      const editedProduct = await res.json();
+
+      //Atualização da tabela:
+      const editedProductIndex = products.findIndex((prod) => prod.id === id);
+      products[editedProductIndex] = editedProduct;
+      setProducts(products);
+    }
+    clearForm();
+    setEdit(false);
+  };
+
+  const deleteProduct = async (id) => {
+    //Faz a requisição HTTP
+    const res = await fetch(url + `/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    const deletedProduct = await res.json();
+    //Atualização da tabela:
+    setProducts(products.filter((prod) => prod.id !== deletedProduct.id));
+  };
+
+  // const editProduct = (id) => {
+  //   const product = products.find((prod) => prod.id === id);
+  //   setId(product.id);
+  //   setName(product.name);
+  //   setPrice(product.price);
+  //   setStock(product.stock);
+  //   setEdit(true);
+  // };
 
   return (
     <>
@@ -186,7 +242,11 @@ function App() {
       </div> */}
 
       <div>
-        <ProductTable products={products} editar={editProduct} deletar={deleteProduct} />
+        <ProductTable
+          products={products}
+          editar={getProductById}
+          deletar={deleteProduct}
+        />
       </div>
       <div>
         <ComponentFormulario

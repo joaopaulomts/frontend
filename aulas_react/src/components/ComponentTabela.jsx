@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ComponentTabela.css";
 
 export default function ProductTable({ products, editar, deletar }) {

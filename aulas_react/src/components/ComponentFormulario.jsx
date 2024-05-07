@@ -9,8 +9,6 @@ export default function ComponentFormulario({
   handlePrice,
   handleStock,
   salvar,
-  editar,
-  excluir,
 }) {
   return (
     <>
@@ -30,6 +28,7 @@ export default function ComponentFormulario({
             type="number"
             name="preco"
             value={preco}
+            min={0}
             onChange={(e) => handlePrice(e)}
             required
           />
@@ -38,6 +37,7 @@ export default function ComponentFormulario({
             type="number"
             name="estoque"
             value={estoque}
+            min={0}
             onChange={(e) => handleStock(e)}
             required
           />
